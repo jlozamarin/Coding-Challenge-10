@@ -25,3 +25,15 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
+// Step 4: Create a checkout event
+addPurchaseButton.addEventListener("click", () => {
+    let availabilityStatus = colorOptions.options[colorOptions.selectedIndex].dataset.availability;
+    let chosenColor = colorOptions.options[colorOptions.selectedIndex].text;
+
+    if (availabilityStatus === "in-stock") {
+        alert(`Congratulations! You successfully bought the ${chosenColor} Coach Tabby Shoulder Bag for ${productPrice.textContent}.`);
+    } else {
+        alert(`Alert: The ${chosenColor} Coach Tabby Shoulder Bag is out of stock.`);
+    }
+});
+});
