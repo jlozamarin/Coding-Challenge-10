@@ -14,26 +14,24 @@ document.addEventListener("DOMContentLoaded", () => {
         colorOptions.addEventListener("change", (event) => {
             let setPrice = event.target.value; // Get the price from the value attribute
             productPrice.textContent = `$${setPrice}`; // Update the displayed price
+            addPurchaseButton.addEventListener("click", () => {
+                let chosenColor = colorOptions.options[colorOptions.selectedIndex].text.split(" - ")[0]; // Get the chosen color name
+                console.log(`You bought the ${chosenColor} Coach Tabby Shoulder Bag for ${productPrice.textContent}.`);
+                alert(`You bought the ${chosenColor} Coach Tabby Shoulder Bag for ${productPrice.textContent}.`);
+            });
         });
+        // Step 4: Create a checkout event
         addPurchaseButton.addEventListener("click", () => {
-            let chosenColor = colorOptions.options[colorOptions.selectedIndex].text.split(" - ")[0]; // Get the chosen color name
-            console.log(`You bought the ${chosenColor} Coach Tabby Shoulder Bag for ${productPrice.textContent}.`);
-            alert(`You bought the ${chosenColor} Coach Tabby Shoulder Bag for ${productPrice.textContent}.`);
+            let availabilityStatus = colorOptions.options[colorOptions.selectedIndex].dataset.availability;
+            let chosenColor = colorOptions.options[colorOptions.selectedIndex].text;
+
+            if (availabilityStatus === "in-stock") {
+                alert(`Congratulations! You successfully bought the ${chosenColor} Coach Tabby Shoulder Bag for ${productPrice.textContent}.`);
+            } else {
+                alert(`Alert: The ${chosenColor} Coach Tabby Shoulder Bag is out of stock.`);
+            }
         });
     } else {
         console.error("Error: Required elements not found.");
     }
-});
-
-// Step 4: Create a checkout event
-addPurchaseButton.addEventListener("click", () => {
-    let availabilityStatus = colorOptions.options[colorOptions.selectedIndex].dataset.availability;
-    let chosenColor = colorOptions.options[colorOptions.selectedIndex].text;
-
-    if (availabilityStatus === "in-stock") {
-        alert(`Congratulations! You successfully bought the ${chosenColor} Coach Tabby Shoulder Bag for ${productPrice.textContent}.`);
-    } else {
-        alert(`Alert: The ${chosenColor} Coach Tabby Shoulder Bag is out of stock.`);
-    }
-});
 });
