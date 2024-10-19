@@ -1,22 +1,26 @@
 
-// Step 2: Add Event Listeners for Product Selection
+// Step 2: Add event listeners for product selection
 document.addEventListener("DOMContentLoaded", () => {
-    let productPrice = document.getElementById("productPrice");
-    let colorOptions = document.getElementById("colorOptions");
-    let addPurchaseButton = document.getElementById("addPurchaseButton");
+    let productPrice = document.getElementById("product-price"); 
+    let colorOptions = document.getElementById("color-selector"); 
+    let addPurchaseButton = document.getElementById("purchase-btn"); 
 
-    console.log(productPrice); // displays the product price element
-    console.log(colorOptions); // displays sthe color options element
-    console.log(addPurchaseButton); // displays the purchase button
+    // Check if the elements are correctly found
+    console.log("Product Price Element:", productPrice); // Should not be null
+    console.log("Color Options Element:", colorOptions); // Should not be null
+    console.log("Purchase Button Element:", addPurchaseButton); // Should not be null
 
-    colorOptions.addEventListener("change", (event) => { // event listener for the color dropdown
-        let setPrice = event.target.options[event.target.selectedIndex].dataset.price; 
-        productPrice.textContent = `$${setPrice}`; 
-    });
-    addPurchaseButton.addEventListener("click", () => { // event listener for the "Shop Now" button
-        let chosenColor = colorOptions.options[colorOptions.selectedIndex].dataset.color; // Get the selected color
-        console.log(`You bought the ${chosenColor} Coach Tabby Shoulder Bag for ${productPrice.textContent}.`);
-        alert(`You bought the ${chosenColor} Coach Tabby Shoulder Bag for ${productPrice.textContent}.`);
-    });
+    if (productPrice && colorOptions && addPurchaseButton) {
+        colorOptions.addEventListener("change", (event) => {
+            let setPrice = event.target.value; // Get the price from the value attribute
+            productPrice.textContent = `$${setPrice}`; // Update the displayed price
+        });
+        addPurchaseButton.addEventListener("click", () => {
+            let chosenColor = colorOptions.options[colorOptions.selectedIndex].text.split(" - ")[0]; // Get the selected color name
+            console.log(`You bought the ${chosenColor} Coach Tabby Shoulder Bag for ${productPrice.textContent}.`);
+            alert(`You bought the ${chosenColor} Coach Tabby Shoulder Bag for ${productPrice.textContent}.`);
+        });
+    } else {
+        console.error("One or more elements not found!");
+    }
 });
-
