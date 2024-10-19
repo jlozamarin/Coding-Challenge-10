@@ -1,4 +1,5 @@
 
+// Step 1 & 3
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,12 +13,12 @@
     
     <label for="color-selector">Color Options:</label>
     <select id="color-selector">
-        <option value="395">Black - $405</option>
-        <option value="395">Chalk - $405</option>
-        <option value="425">Maple - $425</option>
-        <option value="425">Merlot - $425</option>
-        <option value="425">Deep Blue - $450</option>
-        <option value="450">Lavender - $450</option>
+        <option value="395"data-availability="in-stock">Black - $405 (In Stock)</option>
+        <option value="395"data-availability="in-stock">Chalk - $405 (In Stock)</option>
+        <option value="425"data-availability="in-stock">Maple - $425 (In Stock)</option>
+        <option value="425"data-availability="out-of-stock">Merlot - $425 (Out of Stock)</option>
+        <option value="425"data-availability="out-of-stock">Deep Blue - $450 (Out of Stock)</option>
+        <option value="450"data-availability="in-stock">Lavender - $450 (In Stock)</option>
     </select>
     
     <button id="purchase-btn">Shop Now</button>

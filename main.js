@@ -16,11 +16,12 @@ document.addEventListener("DOMContentLoaded", () => {
             productPrice.textContent = `$${setPrice}`; // Update the displayed price
         });
         addPurchaseButton.addEventListener("click", () => {
-            let chosenColor = colorOptions.options[colorOptions.selectedIndex].text.split(" - ")[0]; // Get the selected color name
+            let chosenColor = colorOptions.options[colorOptions.selectedIndex].text.split(" - ")[0]; // Get the chosen color name
             console.log(`You bought the ${chosenColor} Coach Tabby Shoulder Bag for ${productPrice.textContent}.`);
             alert(`You bought the ${chosenColor} Coach Tabby Shoulder Bag for ${productPrice.textContent}.`);
         });
     } else {
-        console.error("One or more elements not found!");
+        console.error("Error: Required elements not found.");
     }
 });
+
