@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (productPrice && colorOptions && addPurchaseButton) {
         colorOptions.addEventListener("change", (event) => {
-            let setPrice = event.target.value; // Get the price from the value attribute
+            let setPrice = event.target.value; // Get the price from the color attribute
             productPrice.textContent = `$${setPrice}`; // Update the displayed price
             addPurchaseButton.addEventListener("click", () => {
                 let chosenColor = colorOptions.options[colorOptions.selectedIndex].text.split(" - ")[0]; // Get the chosen color name
