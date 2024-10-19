@@ -32,4 +32,64 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
         console.error("Error: Required elements not found.");
     }
+
+ // Step 2: Add event listeners for Coach Classic T-Shirt
+ let tshirtPrice = document.getElementById("tshirt-selector");
+ let addPurchaseButtonTshirt = document.getElementById("purchase-btn-tshirt");
+
+ // Check if the elements for T-shirt are correctly found
+ console.log("T-shirt Selector Element:", tshirtPrice); // Should not be null
+ console.log("T-shirt Purchase Button Element:", addPurchaseButtonTshirt); // Should not be null
+
+ if (tshirtPrice && addPurchaseButtonTshirt) {
+     tshirtPrice.addEventListener("change", (event) => {
+         let tshirtPriceValue = event.target.dataset.price; // Get the price from the selected option
+         productPrice.textContent = `$${tshirtPriceValue}`; // Update the displayed price for T-shirt
+     });
+
+     // Step 4: Create a checkout event for Coach Classic T-Shirt
+     addPurchaseButtonTshirt.addEventListener("click", () => {
+         let tshirtAvailabilityStatus = tshirtPrice.options[tshirtPrice.selectedIndex].dataset.availability;
+         let chosenTshirtSize = tshirtPrice.options[tshirtPrice.selectedIndex].text;
+
+         if (tshirtAvailabilityStatus === "in-stock") {
+             alert(`Congratulations! You successfully bought the ${chosenTshirtSize} for ${productPrice.textContent}.`);
+         } else {
+             alert(`Alert: The ${chosenTshirtSize} is out of stock.`);
+         }
+     });
+ } else {
+     console.error("Error: Required elements for Coach Classic T-Shirt not found.");
+ }
+
+
+ // Step 2: Add event listeners for Coach Sneakers
+ let sneakersPrice = document.getElementById("sneakers-selector");
+ let addPurchaseButtonSneakers = document.getElementById("purchase-btn-sneakers");
+
+ // Check if the elements for Sneakers are correctly found
+ console.log("Sneakers Selector Element:", sneakersPrice); // Should not be null
+ console.log("Sneakers Purchase Button Element:", addPurchaseButtonSneakers); // Should not be null
+
+ if (sneakersPrice && addPurchaseButtonSneakers) {
+     sneakersPrice.addEventListener("change", (event) => {
+         let sneakersPriceValue = event.target.dataset.price; // Get the price from the selected option
+         productPrice.textContent = `$${sneakersPriceValue}`; // Update the displayed price for Sneakers
+     });
+
+     // Step 4: Create a checkout event for Coach Sneakers
+     addPurchaseButtonSneakers.addEventListener("click", () => {
+         let sneakersAvailabilityStatus = sneakersPrice.options[sneakersPrice.selectedIndex].dataset.availability;
+         let chosenSneakerColor = sneakersPrice.options[sneakersPrice.selectedIndex].text;
+
+         if (sneakersAvailabilityStatus === "in-stock") {
+             alert(`Congratulations! You successfully bought the ${chosenSneakerColor} for ${productPrice.textContent}.`);
+         } else {
+             alert(`Alert: The ${chosenSneakerColor} is out of stock.`);
+         }
+     });
+ } else {
+     console.error("Error: Required elements for Coach Sneakers not found.");
+ }
 });
+
