@@ -1,11 +1,11 @@
 
 // Step 2: Add Event Listeners for Product Selection
-let productPrice = document.getElementById("product-price");
-let colorOptions = document.getElementById("color-selector");
-let addPurchaseButton = document.getElementById("purchase-button");
+let productPrice = document.getElementById("productPrice");
+let colorOptions = document.getElementById("colorOptions");
+let addPurchaseButton = document.getElementById("addPurchaseButton");
 
 colorOptions.addEventListener("change", (event) => { //event listener for the color dropdown
-    let setPrice = event.target.value; 
+    let setPrice = event.target.options[event.target.selectedIndex].dataset.price; 
     productPrice.textContent = `$${setPrice}`; 
 });
 
